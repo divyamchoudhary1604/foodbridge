@@ -1,0 +1,452 @@
+/* ===========================
+   HOME PAGE CSS – FoodBridge
+   Hero section, animation, how-it-works, impact cards
+   =========================== */
+
+/* ---------- Hero Section ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--bg-cream) 100%);
+  padding: var(--spacing-3xl) 0;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: var(--mint-green);
+  color: var(--primary-green);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border-radius: 20px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero-title {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  color: var(--dark-text);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+}
+
+.hero-title .highlight {
+  color: var(--primary-green);
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--medium-text);
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- FoodBridge Flow Animation Section ---------- */
+.flow-animation-section {
+  padding: var(--spacing-3xl) 0;
+  background-color: var(--bg-white);
+  text-align: center;
+  overflow: hidden;
+}
+
+/* The animated flow container showing Donor -> Volunteer -> NGO */
+.flow-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-2xl) var(--spacing-md);
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  min-width: 100px;
+}
+
+.flow-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+.flow-icon.donor-icon {
+  background-color: var(--light-green);
+}
+
+.flow-icon.bridge-icon {
+  background-color: var(--mint-green);
+}
+
+.flow-icon.volunteer-icon {
+  background-color: #fef3c7;
+}
+
+.flow-icon.ngo-icon {
+  background-color: #dbeafe;
+}
+
+.flow-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+/* Arrow between steps */
+.flow-arrow {
+  font-size: 24px;
+  color: var(--primary-green);
+  position: relative;
+}
+
+/* The animated food package that moves from Donor to NGO */
+.food-package {
+  position: absolute;
+  top: 20px;
+  left: 5%;
+  font-size: 28px;
+  /* Moves the food box from donor side to NGO side */
+  animation: moveFood 4s ease-in-out infinite;
+  z-index: 10;
+}
+
+/* Moves the food box from donor side to NGO side */
+@keyframes moveFood {
+  0% {
+    left: 5%;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    left: 50%;
+    transform: scale(1.15);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    left: 88%;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* ---------- How It Works Section ---------- */
+.how-it-works {
+  background-color: var(--bg-cream);
+  padding: var(--spacing-3xl) 0;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.step-card {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-green);
+  color: var(--bg-white);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-md);
+}
+
+.step-icon {
+  font-size: 36px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.step-card h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.step-card p {
+  font-size: var(--font-size-sm);
+  color: var(--light-text);
+}
+
+/* ---------- Featured Donations Section ---------- */
+.featured-section {
+  padding: var(--spacing-3xl) 0;
+  background-color: var(--bg-white);
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* ---------- Why FoodBridge Section ---------- */
+.why-section {
+  padding: var(--spacing-3xl) 0;
+  background-color: var(--bg-cream);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.why-card {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-3px);
+}
+
+.why-card-icon {
+  font-size: 32px;
+  margin-bottom: var(--spacing-md);
+}
+
+.why-card h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.why-card p {
+  font-size: var(--font-size-sm);
+  color: var(--light-text);
+}
+
+/* ---------- Impact Section ---------- */
+.impact-section {
+  padding: var(--spacing-3xl) 0;
+  background-color: var(--bg-white);
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.impact-card {
+  background: linear-gradient(135deg, var(--light-green), var(--mint-green));
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.impact-card:hover {
+  transform: translateY(-3px);
+}
+
+.impact-number {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  color: var(--primary-green);
+  margin-bottom: var(--spacing-xs);
+}
+
+.impact-label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--dark-text);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background-color: var(--dark-text);
+  color: var(--bg-white);
+  padding: var(--spacing-2xl) 0 var(--spacing-lg);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.footer-brand h3 {
+  color: var(--bg-white);
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-brand p {
+  color: #9ca3af;
+  font-size: var(--font-size-sm);
+}
+
+.footer-links h4 {
+  color: var(--bg-white);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-links a {
+  display: block;
+  color: #9ca3af;
+  font-size: var(--font-size-sm);
+  padding: 4px 0;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--bg-white);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  border-top: 1px solid #374151;
+  color: #9ca3af;
+  font-size: var(--font-size-sm);
+}
+
+.footer-bottom .team-name {
+  color: var(--mint-green);
+  font-weight: 600;
+}
+
+/* ---------- Responsive Breakpoints ---------- */
+
+/* Tablet – 768px and up */
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop – 1024px and up */
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: var(--font-size-4xl);
+  }
+
+  .steps-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .featured-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .impact-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+/* On small screens, simplify the flow animation */
+@media (max-width: 600px) {
+  .flow-container {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .flow-arrow {
+    transform: rotate(90deg);
+  }
+
+  .food-package {
+    display: none;
+  }
+
+  .flow-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+  }
+}

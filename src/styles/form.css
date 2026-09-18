@@ -1,0 +1,152 @@
+/* ===========================
+   FORM CSS – FoodBridge
+   Donate food form, login, register forms
+   =========================== */
+
+/* ---------- Form Page Layout ---------- */
+.form-page {
+  min-height: calc(100vh - 160px);
+  padding: var(--spacing-2xl) 0 var(--spacing-3xl);
+  background-color: var(--bg-cream);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.form-card {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-xl);
+}
+
+.form-card h1 {
+  font-size: var(--font-size-2xl);
+  text-align: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.form-subtitle {
+  text-align: center;
+  color: var(--light-text);
+  margin-bottom: var(--spacing-xl);
+  font-size: var(--font-size-sm);
+}
+
+/* ---------- Form Group ---------- */
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--dark-text);
+  margin-bottom: 6px;
+}
+
+.form-group .required-star {
+  color: var(--error-red);
+  margin-left: 2px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  color: var(--dark-text);
+  background-color: var(--bg-white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px rgba(31, 107, 79, 0.1);
+}
+
+.form-input.input-error,
+.form-select.input-error,
+.form-textarea.input-error {
+  border-color: var(--error-red);
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+/* ---------- Form Row (Side by side inputs) ---------- */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 500px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- Field Error Message ---------- */
+.field-error {
+  color: var(--error-red);
+  font-size: var(--font-size-xs);
+  margin-top: 4px;
+}
+
+/* ---------- Form Submit Button ---------- */
+.form-submit-button {
+  width: 100%;
+  padding: 14px;
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-base);
+}
+
+/* ---------- Form Footer Link ---------- */
+.form-footer {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--medium-text);
+}
+
+.form-footer a {
+  color: var(--primary-green);
+  font-weight: 600;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Demo Notice ---------- */
+.demo-notice {
+  background-color: var(--warning-bg);
+  color: #92400e;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}

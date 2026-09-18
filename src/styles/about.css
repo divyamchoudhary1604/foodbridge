@@ -1,0 +1,208 @@
+/* ===========================
+   ABOUT PAGE CSS – FoodBridge
+   Problem, Solution, Architecture diagram, Team section
+   =========================== */
+
+/* ---------- About Page ---------- */
+.about-page {
+  min-height: calc(100vh - 160px);
+  padding: var(--spacing-2xl) 0 var(--spacing-3xl);
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* ---------- About Section ---------- */
+.about-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.about-section h2 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-green);
+}
+
+.about-section p {
+  font-size: var(--font-size-base);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-md);
+}
+
+/* ---------- Users Grid ---------- */
+.users-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+@media (min-width: 600px) {
+  .users-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.user-card {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-3px);
+}
+
+.user-card-icon {
+  font-size: 36px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.user-card h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-xs);
+}
+
+.user-card p {
+  font-size: var(--font-size-sm);
+  color: var(--light-text);
+}
+
+/* ---------- Architecture Diagram ---------- */
+.architecture-diagram {
+  background-color: var(--bg-cream);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-top: var(--spacing-md);
+}
+
+.architecture-diagram h3 {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-lg);
+}
+
+.arch-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 700px) {
+  .arch-flow {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.arch-box {
+  background-color: var(--bg-white);
+  border: 2px solid var(--primary-green);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-align: center;
+  min-width: 120px;
+}
+
+.arch-box-icon {
+  font-size: 28px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.arch-box-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+.arch-arrow {
+  font-size: 24px;
+  color: var(--primary-green);
+}
+
+@media (max-width: 699px) {
+  .arch-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+/* ---------- Tech Stack ---------- */
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.tech-tag {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: var(--light-green);
+  color: var(--primary-green);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+/* ---------- Team Section ---------- */
+.team-info {
+  background: linear-gradient(135deg, var(--light-green), var(--mint-green));
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  margin-top: var(--spacing-md);
+}
+
+.team-info h3 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-green);
+}
+
+.team-info p {
+  font-size: var(--font-size-base);
+  color: var(--medium-text);
+}
+
+/* ---------- 404 Page ---------- */
+.not-found-page {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-xl);
+}
+
+.not-found-content {
+  max-width: 480px;
+}
+
+.not-found-icon {
+  font-size: 80px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.not-found-code {
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--primary-green);
+  margin-bottom: var(--spacing-sm);
+}
+
+.not-found-content h2 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.not-found-content p {
+  margin-bottom: var(--spacing-xl);
+}

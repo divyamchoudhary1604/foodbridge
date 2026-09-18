@@ -1,0 +1,29 @@
+/* 
+ * index.css – Minimal root styles
+ * Main styles are in src/styles/global.css 
+ * This file is kept minimal because Vite generates it by default.
+ */
+
+/* StatusBadge styles – used across components */
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+.status-available {
+  background-color: #eaf5ef;
+  color: #1f6b4f;
+}
+
+.status-accepted {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.status-completed {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}

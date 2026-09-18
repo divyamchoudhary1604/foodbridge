@@ -1,0 +1,305 @@
+/* ===========================
+   FOOD LISTING CSS – FoodBridge
+   Food cards grid, search/filter bar, food details page
+   =========================== */
+
+/* ---------- Food List Page ---------- */
+.food-list-page {
+  min-height: calc(100vh - 160px);
+  padding: var(--spacing-2xl) 0 var(--spacing-3xl);
+  background-color: var(--bg-cream);
+}
+
+/* ---------- Search and Filter Controls ---------- */
+.controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  max-width: var(--max-width);
+  margin: 0 auto var(--spacing-xl);
+  padding: 0 var(--spacing-md);
+}
+
+.search-input-wrapper {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--light-text);
+  font-size: var(--font-size-lg);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  background-color: var(--bg-white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px rgba(31, 107, 79, 0.1);
+}
+
+.filter-select {
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  background-color: var(--bg-white);
+  color: var(--dark-text);
+  min-width: 160px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--primary-green);
+}
+
+/* ---------- Results Count ---------- */
+.results-count {
+  max-width: var(--max-width);
+  margin: 0 auto var(--spacing-md);
+  padding: 0 var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--light-text);
+}
+
+/* ---------- Food Cards Grid ---------- */
+/* Mobile-first: 1 column */
+.food-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) {
+  .food-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 3 columns */
+@media (min-width: 1024px) {
+  .food-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---------- Individual Food Card ---------- */
+.food-card {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.food-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.food-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-md) 0;
+}
+
+.food-card-category {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: var(--light-green);
+  color: var(--primary-green);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+.food-card-body {
+  padding: var(--spacing-md);
+}
+
+.food-card-name {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--dark-text);
+}
+
+.food-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--spacing-md);
+}
+
+.food-card-info-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--medium-text);
+}
+
+.food-card-info-row .info-icon {
+  font-size: var(--font-size-base);
+  width: 20px;
+  text-align: center;
+}
+
+.food-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-light);
+}
+
+.food-card-footer .primary-button {
+  padding: 8px 18px;
+  font-size: var(--font-size-sm);
+}
+
+/* ---------- No Results ---------- */
+.no-results {
+  text-align: center;
+  padding: var(--spacing-3xl) var(--spacing-md);
+  color: var(--light-text);
+}
+
+.no-results-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-md);
+}
+
+.no-results h3 {
+  color: var(--medium-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ---------- Food Details Page ---------- */
+.food-details-page {
+  min-height: calc(100vh - 160px);
+  padding: var(--spacing-2xl) 0 var(--spacing-3xl);
+  background-color: var(--bg-cream);
+}
+
+.food-details-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.food-details-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--primary-green);
+  font-weight: 500;
+  margin-bottom: var(--spacing-xl);
+  cursor: pointer;
+  background: none;
+  font-size: var(--font-size-base);
+  transition: opacity 0.2s;
+}
+
+.food-details-back:hover {
+  opacity: 0.75;
+}
+
+.food-details-card {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.food-details-header {
+  background: linear-gradient(135deg, var(--light-green), var(--mint-green));
+  padding: var(--spacing-xl);
+}
+
+.food-details-header h1 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+.food-details-header .food-card-category {
+  font-size: var(--font-size-sm);
+}
+
+.food-details-body {
+  padding: var(--spacing-xl);
+}
+
+.food-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+@media (min-width: 600px) {
+  .food-details-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.food-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.food-detail-label {
+  font-size: var(--font-size-sm);
+  color: var(--light-text);
+  font-weight: 500;
+}
+
+.food-detail-value {
+  font-size: var(--font-size-base);
+  color: var(--dark-text);
+  font-weight: 600;
+}
+
+.food-details-description {
+  margin-bottom: var(--spacing-xl);
+}
+
+.food-details-description h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.food-details-description p {
+  line-height: 1.7;
+}
+
+.food-details-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
