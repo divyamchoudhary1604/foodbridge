@@ -2,49 +2,29 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/form.css";
 
-/**
- * Login Page
- *
- * Demo login for frontend project – no real authentication backend.
- *
- * Fields: email, password, role
- * On submit, creates a user object and saves to localStorage.
- *
- * Props:
- * - onLogin: function called with the user object to set current user
- */
 function Login({ onLogin }) {
   const navigate = useNavigate();
 
-  // Form state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
   const [error, setError] = useState("");
 
-  /**
-   * handleSubmit – validates and creates demo user
-   */
   function handleSubmit(event) {
     event.preventDefault();
 
-    // Simple validation
     if (!email.trim() || !password.trim() || !role) {
       setError("Please fill in all fields and select a role.");
       return;
     }
 
-    // Demo login – create user object (no real authentication)
     const user = {
-      name: email.split("@")[0], // Use part before @ as display name
+      name: email.split("@")[0],
       email: email.trim(),
-      role: role,
+      role: role
     };
 
-    // Call the parent function to set the current user
     onLogin(user);
-
-    // Navigate to dashboard after login
     navigate("/dashboard");
   }
 
@@ -52,60 +32,56 @@ function Login({ onLogin }) {
     <main className="form-page">
       <div className="form-container">
         <div className="form-card">
+
           <h1>👋 Welcome Back</h1>
+
           <p className="form-subtitle">
             Log in to your FoodBridge account
           </p>
 
-          {/* Demo notice */}
           <div className="demo-notice">
-            ℹ️ Demo login for frontend project – no real authentication backend.
+            ℹ️ Demo login - no real authentication
           </div>
 
-          {/* Error message */}
-          {error && <div className="error-message">{error}</div>}
+          {error && (
+            <div className="error-message">
+              {error}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit}>
-            {/* Email */}
+
             <div className="form-group">
-              <label htmlFor="login-email">
-                Email <span className="required-star">*</span>
-              </label>
+              <label>Email *</label>
+
               <input
-                id="login-email"
                 type="email"
                 className="form-input"
-                placeholder="e.g., demo@foodbridge.com"
+                placeholder="demo@foodbridge.com"
                 value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
-            {/* Password */}
             <div className="form-group">
-              <label htmlFor="login-password">
-                Password <span className="required-star">*</span>
-              </label>
+              <label>Password *</label>
+
               <input
-                id="login-password"
                 type="password"
                 className="form-input"
-                placeholder="Enter any password (demo)"
+                placeholder="Enter any password"
                 value={password}
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
-            {/* Role Selection */}
             <div className="form-group">
-              <label htmlFor="login-role">
-                Role <span className="required-star">*</span>
-              </label>
+              <label>Role *</label>
+
               <select
-                id="login-role"
                 className="form-select"
                 value={role}
-                onChange={(event) => setRole(event.target.value)}
+                onChange={(e) => setRole(e.target.value)}
               >
                 <option value="">Select your role</option>
                 <option value="Donor">Donor</option>
@@ -115,17 +91,22 @@ function Login({ onLogin }) {
               </select>
             </div>
 
-            {/* Submit Button */}
-            <button type="submit" className="primary-button form-submit-button">
+            <button
+              type="submit"
+              className="primary-button form-submit-button"
+            >
               🔐 Login
             </button>
+
           </form>
 
-          {/* Link to Register */}
           <div className="form-footer">
             Don't have an account?{" "}
-            <Link to="/register">Register here</Link>
+            <Link to="/register">
+              Register here
+            </Link>
           </div>
+
         </div>
       </div>
     </main>

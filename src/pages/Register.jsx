@@ -2,19 +2,9 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/form.css";
 
-/**
- * Register Page
- *
- * Demo registration form for frontend project.
- * Fields: name, email, phone, password, role
- *
- * Props:
- * - onLogin: function to log the user in after registration
- */
 function Register({ onLogin }) {
   const navigate = useNavigate();
 
-  // Form state using a single object
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,17 +15,14 @@ function Register({ onLogin }) {
 
   const [error, setError] = useState("");
 
-  // Update the form data when user types
   function handleChange(event) {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   }
 
-  // Handle form submission
   function handleSubmit(event) {
     event.preventDefault();
 
-    // Simple validation
     if (
       !formData.name.trim() ||
       !formData.email.trim() ||
@@ -52,17 +39,13 @@ function Register({ onLogin }) {
       return;
     }
 
-    // Create user object (demo – no real backend)
     const user = {
       name: formData.name.trim(),
       email: formData.email.trim(),
       role: formData.role,
     };
 
-    // Log the user in automatically after registration
     onLogin(user);
-
-    // Navigate to dashboard
     navigate("/dashboard");
   }
 
@@ -75,16 +58,14 @@ function Register({ onLogin }) {
             Join FoodBridge and start making a difference
           </p>
 
-          {/* Demo notice */}
           <div className="demo-notice">
             ℹ️ Demo registration – no real account is created.
           </div>
 
-          {/* Error message */}
           {error && <div className="error-message">{error}</div>}
 
           <form onSubmit={handleSubmit}>
-            {/* Full Name */}
+
             <div className="form-group">
               <label htmlFor="reg-name">
                 Full Name <span className="required-star">*</span>
@@ -100,7 +81,6 @@ function Register({ onLogin }) {
               />
             </div>
 
-            {/* Email */}
             <div className="form-group">
               <label htmlFor="reg-email">
                 Email <span className="required-star">*</span>
@@ -116,7 +96,6 @@ function Register({ onLogin }) {
               />
             </div>
 
-            {/* Phone */}
             <div className="form-group">
               <label htmlFor="reg-phone">
                 Phone Number <span className="required-star">*</span>
@@ -132,7 +111,6 @@ function Register({ onLogin }) {
               />
             </div>
 
-            {/* Password */}
             <div className="form-group">
               <label htmlFor="reg-password">
                 Password <span className="required-star">*</span>
@@ -148,7 +126,6 @@ function Register({ onLogin }) {
               />
             </div>
 
-            {/* Role */}
             <div className="form-group">
               <label htmlFor="reg-role">
                 Role <span className="required-star">*</span>
@@ -168,13 +145,11 @@ function Register({ onLogin }) {
               </select>
             </div>
 
-            {/* Submit Button */}
             <button type="submit" className="primary-button form-submit-button">
               ✅ Create Account
             </button>
           </form>
 
-          {/* Link to Login */}
           <div className="form-footer">
             Already have an account?{" "}
             <Link to="/login">Login here</Link>

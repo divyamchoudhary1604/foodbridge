@@ -1,15 +1,5 @@
-/**
- * Logo Component
- *
- * A colorful FoodBridge logo:
- * - Green bowl = food
- * - Orange heart inside = care & charity
- * - Green leaf on top = freshness & sustainability
- * - Curved bridge line below = connecting donors to NGOs
- *
- * Props:
- * - size: width/height in pixels (default 32)
- */
+
+
 function Logo({ size = 32 }) {
   return (
     <svg
