@@ -39,6 +39,7 @@ function Login({ onLogin }) {
             Log in to your FoodBridge account
           </p>
 
+        
 
           {error && (
             <div className="error-message">
