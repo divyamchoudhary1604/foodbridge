@@ -39,9 +39,6 @@ function Login({ onLogin }) {
             Log in to your FoodBridge account
           </p>
 
-          <div className="demo-notice">
-            ℹ️ Demo login - no real authentication
-          </div>
 
           {error && (
             <div className="error-message">
