@@ -240,6 +240,7 @@ function DonateFood({ onAddDonation }) {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
+                pattern="[6-9][0-9]{9}"
                 placeholder="9876543210"
               />
 

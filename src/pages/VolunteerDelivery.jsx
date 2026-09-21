@@ -94,7 +94,12 @@ function VolunteerDelivery({ foods, onUpdateFood }) {
             {food.status === "Picked Up" && (
               <button
                 className="deliver-button"
-                onClick={() => markDelivered(food)}
+                onClick={() => {
+                  if (window.confirm("Are you sure you want to mark this delivery as completed?")) {
+                    markDelivered(food);
+                    alert("Delivery completed successfully!");
+                  }
+                }}
               >
                 ✅ Mark Delivered
               </button>
