@@ -1,0 +1,397 @@
+/* ===========================
+   DASHBOARD STYLES – FoodBridge
+   Simple, responsive layout for Dashboard & Nested Routes
+   =========================== */
+
+.dashboard-page {
+  padding: 40px 0;
+  min-height: 80vh;
+}
+
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+}
+
+/* Sidebar */
+.dashboard-sidebar {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  height: fit-content;
+  box-shadow: var(--shadow-sm);
+}
+
+.user-profile-widget {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border-light);
+  margin-bottom: 20px;
+}
+
+.user-avatar-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.user-display-name {
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.user-role-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+}
+
+.user-email {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  word-break: break-all;
+}
+
+.dashboard-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dash-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  font-size: 14px;
+  transition: all var(--transition);
+}
+
+.dash-nav-link:hover {
+  background: var(--color-border-light);
+  color: var(--color-text);
+}
+
+.dash-nav-active {
+  background: var(--color-primary-soft) !important;
+  color: var(--color-primary-dark) !important;
+  font-weight: 700;
+}
+
+.dashboard-sidebar-footer {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border-light);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* Main Content Area */
+.dashboard-main-content {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.dash-header,
+.dash-subpage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.dash-header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Metrics Cards Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.metric-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: 18px;
+  border-radius: var(--radius-md);
+  transition: transform var(--transition);
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+}
+
+.metric-icon {
+  font-size: 28px;
+}
+
+.metric-label {
+  display: block;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metric-value {
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+/* Custom Table */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.custom-table th {
+  background: var(--color-bg);
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--color-border);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.custom-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.table-action-link {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.table-action-link:hover {
+  text-decoration: underline;
+}
+
+.concept-callout-card {
+  margin-top: 32px;
+  background: #f0fdf4;
+  border-left: 4px solid var(--color-primary);
+  padding: 18px 20px;
+  border-radius: var(--radius-sm);
+}
+
+.concept-callout-card h4 {
+  color: var(--color-primary-dark);
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.concept-callout-card p {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+/* Manage Donations Grid */
+.donations-grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.donation-manage-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.donation-manage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-badge-cat {
+  font-size: 12px;
+  background: white;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  font-weight: 600;
+}
+
+.donation-card-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.donation-meta-info {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 18px;
+}
+
+.donation-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-pill-btn {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--color-border);
+  background: white;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.action-pill-btn:hover {
+  background: var(--color-border-light);
+}
+
+.action-pill-btn.delete-btn {
+  color: var(--color-danger);
+  border-color: #fecaca;
+}
+
+.action-pill-btn.delete-btn:hover {
+  background: #fef2f2;
+}
+
+.empty-state-box {
+  text-align: center;
+  padding: 48px 16px;
+  color: var(--color-text-muted);
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Metric Card Highlight Variants ─── */
+.highlight-green {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary-light);
+}
+
+.highlight-amber {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.highlight-blue {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.highlight-purple {
+  background: #faf5ff;
+  border-color: #e9d5ff;
+}
+
+.metric-sublabel {
+  display: block;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* ─── Dash Section ─── */
+.dash-section {
+  margin-bottom: 32px;
+}
+
+.dash-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dash-section-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.view-all-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.view-all-link:hover {
+  text-decoration: underline;
+}
+
+.text-muted {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+/* ─── Modal footer helper ─── */
+.modal-actions-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 100%;
+}
+
+/* ─── Edit button ─── */
+.action-pill-btn.edit-btn {
+  color: var(--color-primary);
+  border-color: var(--color-primary-light);
+}
+
+.action-pill-btn.edit-btn:hover {
+  background: var(--color-primary-soft);
+}
+
+/* ─── Table responsive wrapper ─── */
+.table-responsive {
+  overflow-x: auto;
+}

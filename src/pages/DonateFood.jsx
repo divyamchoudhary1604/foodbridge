@@ -1,17 +1,23 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import InputField from "../components/common/InputField";
+import SelectField from "../components/common/SelectField";
+import TextareaField from "../components/common/TextareaField";
+import { useFood } from "../context/FoodContext";
+import { useToast } from "../context/ToastContext";
 import "../styles/form.css";
 
-function DonateFood({ onAddDonation }) {
-
+function DonateFood() {
   const navigate = useNavigate();
+  const { addFood } = useFood();
+  const { showToast } = useToast();
 
   const [formData, setFormData] = useState({
     donorName: "",
     foodName: "",
     category: "",
     quantity: "",
-    unit: "",
+    unit: "meals",
     location: "",
     phone: "",
     expiry: "",
@@ -20,271 +26,205 @@ function DonateFood({ onAddDonation }) {
 
   const [errors, setErrors] = useState({});
 
-  const [success, setSuccess] = useState(false);
-
-  const donorInput = useRef(null);
+  const donorInputRef = useRef(null);
 
   useEffect(() => {
-    donorInput.current.focus();
+    if (donorInputRef.current) {
+      donorInputRef.current.focus();
+    }
   }, []);
-
 
   function handleChange(e) {
     const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    // Real-time error clearance
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   }
-
 
   function validateForm() {
     const newErrors = {};
 
-    if (!formData.donorName.trim())
+    if (!formData.donorName.trim()) {
       newErrors.donorName = "Donor name is required";
+    }
 
-    if (!formData.foodName.trim())
+    if (!formData.foodName.trim()) {
       newErrors.foodName = "Food name is required";
+    }
 
-    if (!formData.category)
-      newErrors.category = "Please select a category";
+    if (!formData.category) {
+      newErrors.category = "Please choose a food category";
+    }
 
-    if (!formData.quantity || Number(formData.quantity) <= 0)
-      newErrors.quantity = "Enter a valid quantity";
+    if (!formData.quantity || Number(formData.quantity) <= 0) {
+      newErrors.quantity = "Please enter a valid positive quantity";
+    }
 
-    if (!formData.unit.trim())
-      newErrors.unit = "Unit is required";
+    if (!formData.location.trim()) {
+      newErrors.location = "Pickup address is required";
+    }
 
-    if (!formData.location.trim())
-      newErrors.location = "Location is required";
+    // Phone regex / length validation
+    const phoneClean = formData.phone.replace(/\D/g, "");
+    if (phoneClean.length < 10) {
+      newErrors.phone = "Phone number must be at least 10 digits";
+    }
 
-    if (formData.phone.trim().length < 10)
-      newErrors.phone = "Enter a valid phone number";
-
-    if (!formData.expiry)
-      newErrors.expiry = "Expiry date is required";
+    if (!formData.expiry) {
+      newErrors.expiry = "Expiry date is required for safety";
+    }
 
     setErrors(newErrors);
-
     return Object.keys(newErrors).length === 0;
   }
-
 
   function handleSubmit(e) {
     e.preventDefault();
 
     if (!validateForm()) {
+      showToast("Please correct the errors in the form", "error");
       return;
     }
 
-    const newDonation = {
-      id: Date.now(),
-      ...formData,
-      quantity: Number(formData.quantity),
-      status: "Available"
-    };
-
-    onAddDonation(newDonation);
-
-    setFormData({
-      donorName: "",
-      foodName: "",
-      category: "",
-      quantity: "",
-      unit: "",
-      location: "",
-      phone: "",
-      expiry: "",
-      description: ""
-    });
-
-    setSuccess(true);
-
-    setTimeout(() => {
-      setSuccess(false);
-    }, 3000);
+    const newDonation = addFood(formData);
+    showToast("Donation listing published successfully! 🍲", "success");
+    navigate(`/food/${newDonation.id}`);
   }
 
+  const categoryOptions = [
+    "Cooked Meals",
+    "Bakery & Bread",
+    "Fruits & Vegetables",
+    "Packaged & Canned",
+    "Dairy",
+    "Beverages"
+  ];
+
+  const unitOptions = ["meals", "portions", "kg", "packets", "boxes", "liters"];
 
   return (
     <main className="form-page">
-
       <div className="form-container">
-
-        <div className="form-card">
-
-          <h1>🍲 Donate Food</h1>
-
-          <p>
-            Fill in the details about your surplus food
+        <div className="form-card" style={{ maxWidth: "680px" }}>
+          <h1>🍲 Donate Surplus Food</h1>
+          <p className="form-subtitle">
+            Share good surplus food with local NGOs and volunteers
           </p>
 
-          {success && (
-            <div className="success-message">
-              ✅ Donation posted successfully!
-            </div>
-          )}
+          <form onSubmit={handleSubmit} noValidate>
+            <InputField
+              ref={donorInputRef}
+              label="Donor / Organization Name"
+              name="donorName"
+              placeholder="e.g. Green Leaf Cafe or Ananya Roy"
+              value={formData.donorName}
+              onChange={handleChange}
+              error={errors.donorName}
+              required
+            />
 
-          <form onSubmit={handleSubmit}>
+            <InputField
+              label="Food Item Name"
+              name="foodName"
+              placeholder="e.g. Fresh Vegetable Biryani or Bread Loaves"
+              value={formData.foodName}
+              onChange={handleChange}
+              error={errors.foodName}
+              required
+            />
 
-            <div className="form-group">
-              <label>Donor Name *</label>
-
-              <input
-                ref={donorInput}
-                name="donorName"
-                value={formData.donorName}
-                onChange={handleChange}
-                placeholder="e.g. Green Leaf Restaurant"
-              />
-
-              {errors.donorName && (
-                <p>{errors.donorName}</p>
-              )}
-            </div>
-
-            <div className="form-group">
-              <label>Food Name *</label>
-
-              <input
-                name="foodName"
-                value={formData.foodName}
-                onChange={handleChange}
-                placeholder="e.g. Vegetable Rice"
-              />
-
-              {errors.foodName && (
-                <p>{errors.foodName}</p>
-              )}
-            </div>
-
-            <div className="form-group">
-              <label>Category *</label>
-
-              <select
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+              <SelectField
+                label="Food Category"
                 name="category"
+                options={categoryOptions}
+                placeholder="Choose category"
                 value={formData.category}
                 onChange={handleChange}
-              >
-                <option value="">Select category</option>
-                <option value="Meals">Meals</option>
-                <option value="Bakery">Bakery</option>
-                <option value="Fruits">Fruits</option>
-                <option value="Packaged Food">
-                  Packaged Food
-                </option>
-              </select>
+                error={errors.category}
+                required
+              />
 
-              {errors.category && (
-                <p>{errors.category}</p>
-              )}
-            </div>
-
-            <div className="form-row">
-
-              <div className="form-group">
-                <label>Quantity *</label>
-
-                <input
-                  type="number"
+              <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "8px" }}>
+                <InputField
+                  label="Quantity"
                   name="quantity"
+                  type="number"
+                  placeholder="e.g. 25"
                   value={formData.quantity}
                   onChange={handleChange}
-                  placeholder="25"
+                  error={errors.quantity}
+                  required
                 />
-
-                {errors.quantity && (
-                  <p>{errors.quantity}</p>
-                )}
-              </div>
-
-              <div className="form-group">
-                <label>Unit *</label>
-
-                <input
+                <SelectField
+                  label="Unit"
                   name="unit"
+                  options={unitOptions}
+                  placeholder=""
                   value={formData.unit}
                   onChange={handleChange}
-                  placeholder="plates"
+                  required
                 />
-
-                {errors.unit && (
-                  <p>{errors.unit}</p>
-                )}
               </div>
-
             </div>
 
-            <div className="form-group">
-              <label>Pickup Location *</label>
-
-              <input
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+              <InputField
+                label="Pickup Location"
                 name="location"
+                placeholder="e.g. 12 Park Street, Block B"
                 value={formData.location}
                 onChange={handleChange}
-                placeholder="e.g. Sector 17, Chandigarh"
+                error={errors.location}
+                required
               />
 
-              {errors.location && (
-                <p>{errors.location}</p>
-              )}
-            </div>
-
-            <div className="form-group">
-              <label>Phone Number *</label>
-
-              <input
-                type="tel"
+              <InputField
+                label="Contact Phone"
                 name="phone"
+                type="tel"
+                placeholder="e.g. 9876543210"
                 value={formData.phone}
                 onChange={handleChange}
-                pattern="[6-9][0-9]{9}"
-                placeholder="9876543210"
-              />
-
-              {errors.phone && (
-                <p>{errors.phone}</p>
-              )}
-            </div>
-
-            <div className="form-group">
-              <label>Expiry Date & Time *</label>
-
-              <input
-                type="datetime-local"
-                name="expiry"
-                value={formData.expiry}
-                onChange={handleChange}
-              />
-
-              {errors.expiry && (
-                <p>{errors.expiry}</p>
-              )}
-            </div>
-
-            <div className="form-group">
-              <label>Description</label>
-
-              <textarea
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-                placeholder="Additional details..."
+                error={errors.phone}
+                required
               />
             </div>
 
-            <button type="submit">
-              🍲 Post Donation
+            <InputField
+              label="Best Before / Expiry Time"
+              name="expiry"
+              type="datetime-local"
+              value={formData.expiry}
+              onChange={handleChange}
+              error={errors.expiry}
+              helperText="Specify when the food must be consumed or picked up"
+              required
+            />
+
+            <TextareaField
+              label="Pickup Instructions & Notes"
+              name="description"
+              placeholder="e.g. Packed in food-grade foil containers, entrance from side gate."
+              value={formData.description}
+              onChange={handleChange}
+              rows={3}
+              maxLength={250}
+            />
+
+            <button
+              type="submit"
+              className="primary-button form-submit-button"
+              style={{ width: "100%", marginTop: "16px" }}
+            >
+              🚀 Publish Food Donation
             </button>
-
           </form>
-
         </div>
-
       </div>
-
     </main>
   );
 }

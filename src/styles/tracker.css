@@ -1,0 +1,493 @@
+/* ===========================
+   tracker.css – Donation Lifecycle Tracker & Impact Dashboard styles
+   =========================== */
+
+/* ─── Donation Progress Tracker ─── */
+.donation-progress-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  overflow-x: auto;
+  padding: 8px 0 16px;
+}
+
+.progress-step-wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 80px;
+}
+
+.progress-connector {
+  height: 2px;
+  flex: 1;
+  margin-top: 16px;
+  transition: background 0.3s;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 72px;
+}
+
+.progress-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  border: 2px solid #e5e7eb;
+  background: #fff;
+  color: #9ca3af;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.dot-done {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.dot-current {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+}
+
+.dot-future {
+  background: #f9fafb;
+  border-color: #e5e7eb;
+  color: #d1d5db;
+}
+
+.progress-label {
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.3;
+  max-width: 72px;
+  word-break: break-word;
+}
+
+.donation-progress-cancelled {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ─── Donation Action Buttons ─── */
+.lifecycle-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.lifecycle-btn {
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  border: 2px solid;
+  cursor: pointer;
+  transition: all var(--transition);
+  background: transparent;
+}
+
+.lifecycle-btn-primary {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.lifecycle-btn-primary:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.lifecycle-btn-danger {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+.lifecycle-btn-danger:hover {
+  background: var(--color-danger);
+  color: #fff;
+}
+
+/* ─── Urgency / Expiry Banners ─── */
+.urgent-banner {
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.expired-banner {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ─── Donation Detail Card ─── */
+.donation-detail-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.donation-detail-card h3 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.donation-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 12px 0;
+}
+
+.donation-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.donation-meta-item strong {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+.donation-meta-item span {
+  font-size: 14px;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* ─── Impact Dashboard ─── */
+.impact-page {
+  padding: 32px 0 64px;
+}
+
+.impact-header {
+  margin-bottom: 32px;
+}
+
+.impact-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.impact-header p {
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+.impact-disclaimer {
+  background: var(--color-primary-soft);
+  border: 1px solid var(--color-primary-light);
+  color: var(--color-primary-dark);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  font-size: 13px;
+  margin-bottom: 28px;
+}
+
+.impact-section {
+  margin-bottom: 40px;
+}
+
+.impact-section h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ─── CSS Bar Charts ─── */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bar-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  width: 140px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bar-track {
+  flex: 1;
+  height: 20px;
+  background: var(--color-border-light);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transition: width 0.5s ease;
+  min-width: 4px;
+}
+
+.bar-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+  width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ─── Status Distribution ─── */
+.status-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.status-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ─── Recent Activity ─── */
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.activity-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.activity-info {
+  flex: 1;
+}
+
+.activity-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.activity-sub {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* ─── Empty State ─── */
+.empty-impact-state {
+  text-align: center;
+  padding: 64px 24px;
+  background: #fff;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.empty-impact-state .empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.empty-impact-state h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.empty-impact-state p {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+/* ─── Charts Grid ─── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.chart-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.chart-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--color-text);
+}
+
+/* ─── Volunteer / NGO dashboard lists ─── */
+.available-donation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.avail-donation-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.avail-food-info h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.avail-food-info p {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.avail-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ─── Donor timeline view ─── */
+.donation-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.timeline-item {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.timeline-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.timeline-item-header h4 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.timeline-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: 10px;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 640px) {
+  .donation-progress-track {
+    padding: 4px 0 12px;
+  }
+
+  .progress-step-wrapper {
+    min-width: 60px;
+  }
+
+  .progress-dot {
+    width: 26px;
+    height: 26px;
+    font-size: 10px;
+  }
+
+  .progress-label {
+    font-size: 9px;
+    max-width: 56px;
+  }
+
+  .avail-donation-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bar-label {
+    width: 100px;
+  }
+}
